@@ -1,13 +1,11 @@
 *** Settings ***
-Documentation    Suite description
+Resource    Engine/Settings/Keywords.robot
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
-
-*** Keywords ***
-Provided precondition
-    Setup system under test
+User write something into search
+    Given User has accessed the website
+    When User clicked search button
+    And User write something into search
+    Then Search value should be  something
+    And There should be something in search field
+    And close browser

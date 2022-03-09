@@ -10,7 +10,7 @@ ${LOGO_XPATH} //header//leg
 
 
 *** Keywords ***
-user has accessed the website
+User has accessed the website
     Open browser    ${URL}  ${BROWSER}  executable_path ${DRIVER_EXECUTABLE}
     wait until alement is visible   ${LOGO_XPATH}
 
@@ -18,7 +18,7 @@ user has accessed the website
 *** Test Cases ***
 Check main page
     Given User has accessed the website
-    Then title should be    JCommerce,  Outsorcing
+    Then title should be    JCommerce   Outsorcing
     And close browser
 
 Check main page second time
