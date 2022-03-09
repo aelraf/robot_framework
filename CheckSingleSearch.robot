@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    Engine/Settings/Keywords.robot
+Resource   Settings/Keywords.robot
+
 
 *** Test Cases ***
 User write something into search
