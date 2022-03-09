@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.9.4 on win32)" generated="20220308 19:51:03.505" rpa="false" schemaversion="2">
+<suite id="s1" name="Testing" source="C:\Users\Rafal303\Desktop\dane\informatyczne\python\robot_framework\Testing.robot">
+<test id="s1-t1" name="Test title">
+<kw name="Provided precondition">
+<kw name="Setup system under test">
+<msg timestamp="20220308 19:51:03.560" level="FAIL">No keyword with name 'Setup system under test' found.</msg>
+<status status="FAIL" starttime="20220308 19:51:03.560" endtime="20220308 19:51:03.560"/>
+</kw>
+<status status="FAIL" starttime="20220308 19:51:03.558" endtime="20220308 19:51:03.561"/>
+</kw>
+<kw name="When action">
+<status status="NOT RUN" starttime="20220308 19:51:03.563" endtime="20220308 19:51:03.563"/>
+</kw>
+<kw name="Then check expectations">
+<status status="NOT RUN" starttime="20220308 19:51:03.564" endtime="20220308 19:51:03.564"/>
+</kw>
+<tag>DEBUG</tag>
+<status status="FAIL" starttime="20220308 19:51:03.557" endtime="20220308 19:51:03.564">No keyword with name 'Setup system under test' found.</status>
+</test>
+<doc>Suite description</doc>
+<status status="FAIL" starttime="20220308 19:51:03.507" endtime="20220308 19:51:03.565"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">DEBUG</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Testing">Testing</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
