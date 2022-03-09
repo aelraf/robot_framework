@@ -1,13 +1,7 @@
-*** Settings ***
-Documentation    Suite description
-
-*** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
-
-*** Keywords ***
-Provided precondition
-    Setup system under test
+*** Variables ***
+${BACKOFFICE_FRONTEND_URL}    https://www.jcommerce.pl/
+${BROWSER}     Chrome
+${DRIVER_EXECUTABLE}    Drivers/chromedriver.exe
+${LOGO_XPATH}    //header//img
+${SEARCH_XPATH}    //*
+${SEARCH_INPUT}    //*
