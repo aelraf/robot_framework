@@ -1,13 +1,15 @@
 *** Settings ***
-Documentation    Suite description
-
-*** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
-
-*** Keywords ***
-Provided precondition
-    Setup system under test
+Library  AlertKeywords
+Library  BrowserManagementKeywords
+Library  CookieKeywords
+Library  ElementKeywords
+Library  FormElementKeywords
+Library  FrameKeywords
+Library  JavaScriptKeywords
+Library  RunOnFailureKeywords
+Library  ScreenshotKeywords
+Library  SelectElementKeywords
+Library  TableElementKeywords
+Library  WaitingKeywords
+Library  WindowKeywords
+Library  SeleniumLibrary
