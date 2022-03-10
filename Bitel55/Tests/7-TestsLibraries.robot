@@ -50,3 +50,18 @@ This will also not work
     ${FIRST_INSTANCE}  get library instance  first
     ${FIRST_INSTANCE.value}  FIRST!!!
     log to console  ${FIRST_INSTANCE.value}
+
+
+# trzeci niedziałający przykład
+Unfortunetely this is not working also
+    log to console  ${EMPTY}
+    ${SECOND_INSTANCE}  get library instance  SecondTestClass
+    first.change_value
+
+
+But this one will to the job!
+    log to console  ${EMPTY}
+    ${FIRST_INSTANCE}  get library instance  first
+    ${FIRST_AGAIN_INSTANCE}  get library instance  first_again
+    ${FIRST_INSTANCE.value}  set variable  FIRST!!!
+    log to console  ${\n}${FIRST_INSTANCE.value}
