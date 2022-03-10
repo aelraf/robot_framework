@@ -42,3 +42,11 @@ This will not work
     set library search order  first first_again  Libraries/SecondTestClass.py
     log to console  ${EMPTY}
     first_again.value  FIRST!!!
+
+
+# poniższy także nie zadziała
+This will also not work
+    log to console  ${EMPTY}
+    ${FIRST_INSTANCE}  get library instance  first
+    ${FIRST_INSTANCE.value}  FIRST!!!
+    log to console  ${FIRST_INSTANCE.value}
