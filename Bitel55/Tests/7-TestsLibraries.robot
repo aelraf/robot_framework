@@ -7,3 +7,31 @@ Library    Libraries/FirstTestClass.py  WITH NAME  first_again
 Check creation
     log to console   I'm here!
 
+
+Check first libraries
+    log to console  ${\n}FIRST CHANGE:
+    first.change_value  FIRST!!!
+
+    log to console  ${\n}FIRST CHANGE FOR SECOND FIRST:
+    first_again.change_value  FIRST AGAIN!!!
+
+    log to console  ${\n}SECOND CHANGE FOR FIRST ONE:
+    first.change_value  not again...
+
+
+Check libraries order
+    change value  FIRST!!!
+
+
+# ustawiamy kolejność, w jakiej ma Robot Framework wyszukiwać
+How to get value
+    log to console  ${EMPTY}
+    ${FIRST_INSTANCE}  get library instance  first
+    ${FIRST_AGAIN_INSTANCE}  get library instance  first_again
+    set library search order  first  first_again Libraries/SecondTestClass.py
+    change value  FIRST!!!
+    log to console  Checking values:
+    log to console  ${FIRST_INSTANCE.value}
+    log to console  ${FIRST_AGAIN_INSTANCE.value}
+    ${VALUE}  get value
+    log to console  ${VALUE}
