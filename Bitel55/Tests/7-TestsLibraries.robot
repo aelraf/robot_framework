@@ -28,10 +28,17 @@ How to get value
     log to console  ${EMPTY}
     ${FIRST_INSTANCE}  get library instance  first
     ${FIRST_AGAIN_INSTANCE}  get library instance  first_again
-    set library search order  first  first_again Libraries/SecondTestClass.py
+    set library search order  first  first_again  Libraries/SecondTestClass.py
     change value  FIRST!!!
     log to console  Checking values:
     log to console  ${FIRST_INSTANCE.value}
     log to console  ${FIRST_AGAIN_INSTANCE.value}
     ${VALUE}  get value
     log to console  ${VALUE}
+
+
+# poniższy test nie zadziała
+This will not work
+    set library search order  first first_again  Libraries/SecondTestClass.py
+    log to console  ${EMPTY}
+    first_again.value  FIRST!!!
