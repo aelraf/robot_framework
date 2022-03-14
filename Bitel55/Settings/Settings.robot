@@ -13,3 +13,4 @@ Library  TableElementKeywords
 Library  WaitingKeywords
 Library  WindowKeywords
 Library  SeleniumLibrary
+Resource  Settings/Variables.robot

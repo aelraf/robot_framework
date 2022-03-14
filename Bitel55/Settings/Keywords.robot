@@ -22,3 +22,7 @@ Search value should be
     ${TEXT}    get value    ${SEARCH_INPUT}
     should be equal as string    ${TEXT}    ${VALUE}
 
+
+There should be ${VALUE} in search field
+    ${TEXT}  get value  ${EARCH_INPUT}
+    should be equal as string  ${TEXT}  ${VALUE}
