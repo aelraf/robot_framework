@@ -65,3 +65,12 @@ But this one will to the job!
     ${FIRST_AGAIN_INSTANCE}  get library instance  first_again
     ${FIRST_INSTANCE.value}  set variable  FIRST!!!
     log to console  ${\n}${FIRST_INSTANCE.value}
+
+
+This will work too but not as may be expected!
+    log to console  ${EMPTY}
+    ${VARIABLE}  SecondTestClass.get_value
+    SecondTestClass.change value  SECOND!!!
+    ${OTHER_VARIABLE}  get value
+    ${SECOND}  get library instance  SecondTestClass
+    log to console  ${VARIABLE}
