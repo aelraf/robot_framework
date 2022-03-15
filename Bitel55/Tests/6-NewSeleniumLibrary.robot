@@ -19,5 +19,12 @@ Check if email is correct
     should be equal as string  ${EMAIL}   office@jcommerce.pl
     close browser
 
+Check main page
+    ${VALUE}  get variable value  ${HIDDEN_VARIABLE}
+    ${VALUE}  get variable by full text  HIDDEN_VARIABLE
+    ${VALUE}  get variable by full text  ${HIDDEN_VARIABLE}
+    ${VALUE}  get variable  HIDDEN_VARIABLE
+    # z trzech powyższych, tylko ostatnie zadziała jako sposób pobrania zmiennej z Robota do pythona
+    log to console  ${\n}${VALUE}
 
 
