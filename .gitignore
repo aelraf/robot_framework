@@ -51,6 +51,9 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# testy automatyczne - robotFramework
+output.xml
+
 # Translations
 *.mo
 *.pot
