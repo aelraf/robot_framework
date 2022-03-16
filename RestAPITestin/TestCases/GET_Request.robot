@@ -1,5 +1,6 @@
 *** Settings ***
 Library     RequestsLibrary
+Library     Collections
 
 *** Variables ***
 ${BASE_URL}    http://restapi.demoqa.com
@@ -22,4 +23,7 @@ Get weather info
     ${BODY}=    convert to string    ${RESPONSE.content}
     should contain    ${BODY}   Delhi
 
+
+    ${content_type_value}=   get from dictionary    ${RESPONSE.headers}    Content-Type
+    should be equal    ${content_type_value}    application/json
 
