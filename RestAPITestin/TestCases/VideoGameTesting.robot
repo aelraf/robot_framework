@@ -1,13 +1,20 @@
 *** Settings ***
-Documentation    Suite description
+Library   RequestsLibrary
+Library   Colections
+
+
+*** Variables ***
+${BASE_URL}    http://localhost:8000
+
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+Returns all the video games
+    create session    mysession    ${BASE_URL}
+    ${RESPONSE}=    get request    mysession    /app/videogames
+    log to console    ${RESPONSE.status_code}
+    log to console    ${RESPONSE.content}
 
-*** Keywords ***
-Provided precondition
-    Setup system under test
+    ${status_code}=    convert to string    ${RESPONSE.status_code}
+    should be equal    ${status_code}    200
+
+
