@@ -14,3 +14,12 @@ Get weather info
     log to concole    ${RESPONSE.content}
     log to concole    ${RESPONSE.headers}
 
+    # walidujemy poprawność kodu odpowiedzi
+    ${STATUS_CODE}=    convert to string    ${RESPONSE.status_code}
+    should be equal    ${STATUS_CODE}   200
+
+
+    ${BODY}=    convert to string    ${RESPONSE.content}
+    should contain    ${BODY}   Delhi
+
+
