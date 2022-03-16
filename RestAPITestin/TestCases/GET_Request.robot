@@ -1,13 +1,16 @@
 *** Settings ***
-Documentation    Suite description
+Library     RequestsLibrary
+
+*** Variables ***
+${BASE_URL}    http://restapi.demoqa.com
+${CITY}    Delhi
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+Get weather info
+    create session    mysession    ${BASE_URL}
+    ${RESPONSE}=    get request    mysession    /utilities/weather/city/${CITY}
 
-*** Keywords ***
-Provided precondition
-    Setup system under test
+    log to concole    ${RESPONSE.status_code}
+    log to concole    ${RESPONSE.content}
+    log to concole    ${RESPONSE.headers}
+
