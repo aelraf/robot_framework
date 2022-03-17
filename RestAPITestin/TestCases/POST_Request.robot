@@ -12,3 +12,14 @@ Put customer registration
     ${HEADER}=    create dictionary    Content-Type=application/json
 
     ${RESPONSE}=    post request    mysession    /register    data=${BODY}
+
+    log to console    ${RESPONSE.status_code}
+    log to console    ${RESPONSE.content}
+
+    # walidacja
+    ${STATUS_CODE}=    convert to string    ${RESPONSE.status_code}
+    should be equal    ${STATUS_CODE}    200
+
+    ${RES_BODY}=   convert to string    ${RESPONSE.content}
+    should contain    ${RES_BODY}    OPERAION_SUCCESS
+    should contain    ${RES_BODY}    Operation completed successfully
