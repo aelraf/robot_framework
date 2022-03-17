@@ -53,6 +53,8 @@ cover/
 
 # testy automatyczne - robotFramework
 output.xml
+log.html
+report.html 
 
 # Translations
 *.mo
