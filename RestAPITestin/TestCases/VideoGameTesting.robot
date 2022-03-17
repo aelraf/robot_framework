@@ -49,11 +49,11 @@ Return the detail of a single game by ID (GET)
     should contain    ${RES_BODY}    Spider-Man
 
 
-Update an existing video game by specifying anew body (PUT)
+Update an existing video game by specifying a new body (PUT)
     create session    mysession    ${BASE_URL}
-    ${BODY}=    create dictionary    id=100  name=Spider-Man  reviewScore=10
+    ${BODY}=    create dictionary    id=100  name=Pacman  reviewScore=10
     ${HEADER}=    create dictionary    Content-Type=application/json
-    ${RESPONSE}=    post request    mysession    /app/videogames  data=${BODY}  headers=${HEADER}
+    ${RESPONSE}=    put request    mysession    /app/videogames/100  data=${BODY}  headers=${HEADER}
 
     log to console    ${RESPONSE.status_code}
     log to console    ${RESPONSE.content}
@@ -63,4 +63,17 @@ Update an existing video game by specifying anew body (PUT)
     should be equal    ${STATUC_CODE}    200
 
     ${RES_BODY}=    convert to string    ${RESPONSE.content}
-    should contain    ${RES_BODY}    Record Added Successfully
+    should contain    ${RES_BODY}    Pacman
+
+
+Delete a video game by ID (DELETE)
+    create session    mysession    ${BASE_URL}
+    ${RESPONSE}=    delete request    mysession    /app/videogames/100
+
+    # sprawdzamy poprawności
+    ${STATUS_CODE}=   convert to string    ${RESPONSE.status_code}
+    should be equal    ${STATUS_CODE}    200
+
+    ${RES_BODY}=   convert to string    ${RESPONSE.content}
+    should contain    ${RES_BODY}    Record Deleted Successfully
+
