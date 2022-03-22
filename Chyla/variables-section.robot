@@ -84,6 +84,23 @@ Variable In Keyword
     Log    Variable new_dict: ${new_dict}
 
 
+# w bibliotece BuiltIn mamy najczęściej używane operacje
+# http://robotframework.org/robotframework/3.1/libraries/BuiltIn.html
+Najczesciej Uzywane Keywordy
+    # sprawdzamy, czy podany warunek jest prawdą
+    Should Be True
+    # sprawdzamy, czy podane dwie wartości są równe
+    Should Be Equal
+    # porównywanie zmiennych jako napisy
+    Should Be Equal As String
+    # porównywanie zmiennych jako liczby całkowite
+    Should Be Equal As Integers
+    # łączenie napisów
+    Catenate
+    # uruchamianie podanego wyrażenia w Pythonie
+    Evaluate
+    # wykonuje tylko jeśli warunek jest spełniony
+    Run Keyword If
 
 
 
