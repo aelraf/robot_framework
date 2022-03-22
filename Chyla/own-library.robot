@@ -1,13 +1,11 @@
 *** Settings ***
-Documentation    Suite description
+Library    my_math.py
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+Custom Library Test
+    ${sum}=    My Sum    4    2
+    Log    Sum: ${sum}
 
-*** Keywords ***
-Provided precondition
-    Setup system under test
+# spacje w nazwie keywordu są tłumaczone na znaki podłogi (_) w nazwie funkcji
+# argumenty przekazywane są jako napisy, dlatego należy jawnie zamienić je na liczby
+# czy - szerzej - na pożądany typ danych
