@@ -68,8 +68,20 @@ Tworzenie zmiennych w tescie
     # biblioteka Collections
     # http://robotframework.org/robotframework/3.1/libraries/Collections.html
 
-    
 
+# zmienne można modyfikować i tworzyć w teście lub keywordzie za pomocą odpowiednich keywordów
+Variable In Keyword
+    ${new_name}=    Set Variable    Janusz
+    ${new_list}=    Create List    Janusz
+    ...    Alicja    Natalia
+    ${new_dict}=    Create Dictionary
+    ...    name=Anna    lastname=Nowak
+
+    Length Should Be    ${new_list}    3
+
+    Log    Variable new_name: ${new_name}
+    Log    Variable new_dict: ${new_list}
+    Log    Variable new_dict: ${new_dict}
 
 
 
