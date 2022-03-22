@@ -56,7 +56,20 @@ Funkcje (Keywordy) ktore moga przerwac wykonywanie testu
     # operacje te są dostępne tutaj
     # http://robotframework.org/robotframework/3.1/libraries/BuiltIn.html
 
+
+Tworzenie zmiennych w tescie
+    # tworzy zmienną w ciele testu lub keywordu
+    Set Variable
+    # tworzy listę w ciele testu lub keywordu
+    Create List
+    # tworzy słownik w ciele testu lub keywordu
+    Create Dictionary
+
+    # biblioteka Collections
+    # http://robotframework.org/robotframework/3.1/libraries/Collections.html
+
     
+
 
 
 
