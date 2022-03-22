@@ -41,4 +41,24 @@ Operacje na kolekcjach
     Sort List
 
 
+Funkcje (Keywordy) ktore moga przerwac wykonywanie testu
+    # założenie co do liczby elementów
+    Length Should Be
+    # założenie co do pustej kolekcji
+    Should Be Empty
+    # założenie co do niepustej kolekcji
+    Should Not Be Empty
+    # założenie co do elementu znajdującego się w kolekcji
+    Should Contain
+    # założenie co do braku elementu w kolekcji
+    Should Not COntain
+
+    # operacje te są dostępne tutaj
+    # http://robotframework.org/robotframework/3.1/libraries/BuiltIn.html
+
+    
+
+
+
+
 
