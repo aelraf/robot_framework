@@ -1,13 +1,11 @@
-*** Settings ***
-Documentation    Suite description
-
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+Sum two numbers
+    ${result}=    My Own Sum Keyword    4    5
+    Should Be Equal As Integers    ${result}    9
 
 *** Keywords ***
-Provided precondition
-    Setup system under test
+My Own Sum Keyword
+    [Documentation]    Add two numbers.
+    [Arguments]    ${a}    ${b}
+    ${w}=    Evaluate    ${a} + ${b}
+    [Return]    ${w}
