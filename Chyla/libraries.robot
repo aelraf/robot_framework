@@ -1,13 +1,15 @@
 *** Settings ***
-Documentation    Suite description
+Documentation    Variables example.
+Library    Collections
+
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+Variable With Library
+    ${names}=    Create List    Janusz
+    ...    Alicja    Natalia
+    Sort List    ${names}
+    Log    Imiona: ${names}
 
-*** Keywords ***
-Provided precondition
-    Setup system under test
+
+# lista dostępnych bibliotek
+# http://robotframework.org/robotframework/
