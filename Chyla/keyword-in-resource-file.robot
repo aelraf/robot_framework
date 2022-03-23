@@ -1,13 +1,7 @@
 *** Settings ***
-Documentation    Suite description
+Resource    own_keywords.resource
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
-
-*** Keywords ***
-Provided precondition
-    Setup system under test
+Sum Two Numbers
+    ${result}=    My Own Sum Keyword    4    5
+    Should Be Equal As Integers    ${result}    9
