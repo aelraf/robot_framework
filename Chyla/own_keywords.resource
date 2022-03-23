@@ -1,5 +1,6 @@
-
-
 *** Keywords ***
-Provided precondition
-    Setup system under test
+Suma
+    [Documentation]    Add two numbers
+    [Arguments]    ${a}    ${b}
+    ${w}=    Evaluate    ${a} + ${b}
+    [Return]    ${w}
