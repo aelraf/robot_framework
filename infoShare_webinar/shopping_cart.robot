@@ -31,12 +31,19 @@ Open Shop Webpage
     Open Browser    http://localhost/    firefox
 
 Check If Shopping Cart Has ${amount} Product
-    Wait Until Element Contain    ${CART_ITEMS_AMOUNT}    ${amount} items in cart
+    ${expected_text}    Set Vaiable Of    '${amount}' > '0'
+    ...    item(s) in cart
+    ...    items in cart
+    Wait Until Element Contain
+    ...    ${CART_ITEMS_AMOUNT}
+    ...    ${amount} ${expected_text}
+    ...    timeout=2s
 
 Go To Product View
     Click Element    ${PRODUCT_VIEW}
 
 Add Product To Shopping Cart
+    Wait Until Page Contains Element    ${ADD_TO_CART_BUTTON}    timeout=2s
     Click Element    ${ADD_TO_CART_BUTTON}
 
 
