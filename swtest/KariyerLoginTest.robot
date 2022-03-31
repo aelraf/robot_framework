@@ -1,13 +1,16 @@
 *** Settings ***
-Documentation    Suite description
+Resource     ../first_test_selenium.robot
+Suite Teardown    Close Browser
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
-
-*** Keywords ***
-Provided precondition
-    Setup system under test
+Login Should Failed With Wrong Username And Password
+    [TAGS]    Failed_Kariyernet_Login_Test
+    Open Chrome With Options
+    Open Kariyernet
+    Check Title
+    Go to User Login Page
+    Enter User Name
+    Enter Wrong Password
+    Click Login
+    sleep    ${Delay}
+    Assert Warning Message
