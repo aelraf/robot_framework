@@ -46,4 +46,15 @@ Evaluating expressions - Using variables
     Should Be True    len($result) > 1 and $result[1] == 'OK'
     Should Be True    $result is not None
 
+    Should Be Equal    ${x}    ${y}
+    # wyrażenia regularne:
+    # * - dowolny ciąg znaków, także pusty string
+    # ? - dowolny pojedynczy znak
+    # [znaki] - oznacza pojedynczy znak z wymienionych w nawiasie
+    # [!znaki] - oznacza pojedynczy znak z niewymienionych w nawiasie
+    # [a-z] - oznacza jeden znak z zakresu w nawiasie
+    # [!a-z] - oznacza jeden znak nie z zakresu w nawiasie
+
+
+
 
