@@ -110,6 +110,32 @@ Convert To Binary Example
     Should Be Equal    -B0010    ${result}
 
 
+Convert To Bytes Example
+    ${bytes}=    Convert To Bytes    hyv
+    Should Be Equal    hyv    hyv
+
+    ${bytes}=    Convert To Bytes    82 70    int
+    Should Be Equal    RF    ${bytes}
+
+    ${bytes}=    Convert To Bytes    0b10 0x10    int
+    Should Be Equal    \x02\x10    ${bytes}
+
+    ${bytes}=    Convert To Bytes    ff 00 07    hex
+    Should Be Equal    \xff\x00\x07    ${bytes}
+
+    ${bytes}=    Convert To Bytes    52462121    hex
+    Should Be Equal    RF!!    ${bytes}
+
+    ${bytes}=    Convert To Bytes    0000 1000    bin
+    Should Be Equal    \x08    ${bytes}
+
+    ${input}=    Create List    1    2
+    ${bytes}=    Convert To Bytes    ${input}    int
+    Should Be Equal    \x01\x02\x0c    ${bytes}
+    ${bytes}=    Convert To Bytes    ${input}    hex
+    Should Be Equal    \x01\x02\x12    ${bytes}
+
+
 
 
 
