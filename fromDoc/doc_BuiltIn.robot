@@ -92,13 +92,25 @@ Continue For Loop Examples
     END
 
 
+Continue For Loop If Examples
+    FOR    ${var}    IN    @{VALUES}
+        Continue For Loop If    '${var}'=='CONTINUE'
+        Do Something    ${var}
+    END
+
+
+Convert To Binary Example
+    ${result}=    Convert To Binary    10
+    Should Be Equal    1010    ${result}
+
+    ${result}=    Convert To Binary    F    base=16    prefix=0b
+    Should Be Equal    0b1111    ${result}
+
+    ${result}=    Convert To Binary    -2    prefix=B    length=4
+    Should Be Equal    -B0010    ${result}
 
 
 
 
 
-
-
-
-           
 
