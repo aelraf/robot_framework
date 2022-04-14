@@ -56,5 +56,18 @@ Evaluating expressions - Using variables
     # [!a-z] - oznacza jeden znak nie z zakresu w nawiasie
 
 
+Boolean arguments
+    Should Be Equal    ${x}    ${y}    # Custom error    values=True
+    Should Be Equal    ${x}    ${y}    # Custom error    values=yes
+    Should Be Equal    ${x}    ${y}    # Custom error    values=${TRUE}
+    Should Be Equal    ${x}    ${y}    # Custom error    values=${42}
+
+
+Multiline string comparison
+    ${first} =     Catenate    SEPARATOR=\n    # Not in second    Same    Differs1    Same
+    ${second} =    Catenate    SEPARATOR=\n    # Same    Differs2    Same    Not in first
+    Should Be Equal    ${first}    ${second}
+
+
 
 
