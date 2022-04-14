@@ -69,5 +69,36 @@ Multiline string comparison
     Should Be Equal    ${first}    ${second}
 
 
+# Keywordy z tej klasy:
+Call Method examples
+    ${isempty}=    Call Method    ${hashable}    isEmpty
+    Should Not Be True    ${isempty}
+    ${value}=    Call Method    ${hashable}    get    myname
+    Should Be Equal    ${value}    myvalue
+    Call Method    ${object}    kwargs    name=value    foo=bar
+    Call Method    ${object}    positional    escaped\=equals
 
+
+Catenate exaples
+    ${str}=    Catenate    Hello    world
+    ${str}=    Catenate    SEPARATOR=---    Hello    world
+    ${str}=    Catenate    SEPARATOR=       Hello    world
+
+
+Continue For Loop Examples
+    FOR    ${var}    IN    @{VALUES}
+        Run Keyword If    '${var}'=='CONTINUE'    Continue For Loop
+        Do Something    ${var}
+    END
+
+
+
+
+
+
+
+
+
+
+           
 
