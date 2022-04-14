@@ -136,7 +136,33 @@ Convert To Bytes Example
     Should Be Equal    \x01\x02\x12    ${bytes}
 
 
+Convert To Hex Example
+    ${result}=    Convert To Hex    255
+    Should Be Equal    ${result}    FF
+
+    ${result}=    Convert To Hex    -10    prefix=0x    length=2
+    Should Be Equal    ${result}    -0x0A
+
+    ${result}=    Convert To Hex    255    prefix=X    lowercase=yes
+    Should Be Equal    ${result}    Xff
 
 
+Convert To Integer Example
+    ${result}=    Convert To Integer    100
+    Should Be Equal    ${result}    100
 
+    ${result}=    Convert To Integer    FF AA
+    Should Be Equal    ${result}    65450
+
+    ${result}=    Convert To Integer    100    8
+    Should Be Equal    ${result}    64
+
+    ${result}=    Convert To Integer    -100    2
+    Should Be Equal    ${result}    -4
+
+    ${result}=    Convert To Integer    0b100
+    Should Be Equal    ${result}    4
+
+    ${result}=    Convert To Integer    -0x100
+    Should Be Equal    ${result}    -256
 
