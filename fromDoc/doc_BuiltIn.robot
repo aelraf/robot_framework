@@ -166,3 +166,17 @@ Convert To Integer Example
     ${result}=    Convert To Integer    -0x100
     Should Be Equal    ${result}    -256
 
+
+Convert To Number Example
+    ${result}=    Convert To Number    42.512
+    Should Be Equal    ${result}    42.512
+
+    ${result}=    Convert To Number    42.512    1
+    Should Be Equal    ${result}    42.5
+
+    ${result}=    Convert To Number    42.512    0
+    Should Be Equal    ${result}    43.0
+
+    ${result}=    Convert To Number    42.512    -1
+    Should Be Equal    ${result}    40.0
+
