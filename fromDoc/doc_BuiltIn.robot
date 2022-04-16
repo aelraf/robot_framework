@@ -180,3 +180,14 @@ Convert To Number Example
     ${result}=    Convert To Number    42.512    -1
     Should Be Equal    ${result}    40.0
 
+
+Convert To Octal Example
+    ${result}=    Convert To Octal    10
+    Should Be Equal    ${result}    12
+
+    ${result}=    Convert To Octal    -F    base=16    prefix=0
+    Should Be Equal    ${result}    -017
+
+    ${result}=    Convert To Octal    16     prefix=oct    length=4
+    Should Be Equal    ${result}    oct0020
+
