@@ -204,4 +204,34 @@ Create Directory Example
     Should Be Equal    ${dict.key}    value
 
 
+Create List Example
+    @{list}=    Create List    a    b    c
+    ${scalar}=    Create List    a    b    c
+    ${ints}=    Create List    ${1}    ${2}    ${3}
+
+
+Exit For Loop Example
+    FOR     ${var}    IN    @{VALUES}
+        Run Keyword If   '${var}' == 'EXIT'    Exit For Loop
+        Do Something    ${var}
+    END
+
+
+Exit For Loop If
+    FOR    ${var}    IN    @{VALUES}
+        Exit For Loop If    '${var}' == 'EXIT'
+        Do Something    ${var}
+    END
+
+
+    
+
+
+
+
+
+
+
+
+
 
