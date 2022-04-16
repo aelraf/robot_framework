@@ -191,3 +191,17 @@ Convert To Octal Example
     ${result}=    Convert To Octal    16     prefix=oct    length=4
     Should Be Equal    ${result}    oct0020
 
+
+Create Directory Example
+    &{dict}=    Create Dictionary    key=value    foo=bar
+    Should Be True    ${dict} == {'key': 'value', 'foo': 'bar'}
+
+    &{dict2}=    Create Directory    key    value    foo    bar
+    Should Be Equal    ${dict1}    ${dict2}
+
+    &{dict}=    Create Directory    ${1}=${2}    &{dict}    foo=new
+    Should Be True    ${dict} == {1: 2, 'key':"value", 'foo': 'new'}
+    Should Be Equal    ${dict.key}    value
+
+
+
