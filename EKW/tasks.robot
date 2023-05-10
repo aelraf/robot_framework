@@ -11,9 +11,12 @@ Library    RPA.Browser.Selenium    auto_close=${FALSE}
 Minimal Task
     Log    Done.
 
-Insert The Sales Data For The Week And Export It As PDF
-    Open The Intranet Website
-    Log In
+#Insert The Sales Data For The Week And Export It As PDF
+#    Open The Intranet Website
+#    Log In
+
+Open TheKW
+    Open Browser And Go To KW
 
 
 *** Keywords ***
@@ -23,7 +26,7 @@ Open The Intranet Website
 
 Open Browser And Go To KW
     # open available browser    https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW?komunikaty=true&kontakt=true&okienkoSerwisowe=false
-    Open Available Browser    https://ekw.ms.gov.pl/eukw_ogol/menu.do
+    Open Available Browser    https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW
     click element    Przeglądanie Księgi Wieczystej
 
 Log In
