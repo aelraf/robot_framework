@@ -19,23 +19,6 @@ def get_from_rest():
     return response
 
 
-def get_from_rest_with_data(number, digit):
-    """
-    :param number: numer księgi wieczystej
-    :param digit: cyfra kontrolna
-    :return:
-    """
-    api_url = "https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW"
-    data_for_book = {
-        "kodEci": "TO1T",
-        "numerKw": number,
-        "cyfraKontrolna": digit,
-        "wyszukaj": "Submit"
-    }
-    response = requests.get(api_url, data_for_book)
-    return response
-
-
 def read_from_rest_with_header(number, digit):
     api_url = "https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW"
     data_for_book = {
@@ -76,10 +59,4 @@ if __name__ == "__main__":
     print(resp)
     print(resp.request)
 
-    # poniższe zwraca komunikat:
-    # requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'Istniejące połączenie zostało gwałtownie zamknięte przez zdalnego hosta', None, 10054, None))
-    # resp2 = get_from_rest_with_data(1, 7)
-    # print("status code: ", resp2.status_code)
-    # print("data:")
-    # print(resp2)
 
