@@ -5,8 +5,22 @@ import json
 
 
 def count_a_control_digit(number):
-    digit = 0
-    return digit
+    """
+    :param number: liczba, której chcemy przyporządkować cyfrę kontrolną
+    :return: cyfra kontrolna, zgodna z algorytmem dla EKW
+    """
+    rest = []
+    for i in range(8):
+        rest.append(number % 10)
+        number = int(number/10)
+    print(rest)
+
+    digit = 7 * rest[0] + 3 * rest[1] + 1 * rest[2] + 7 * rest[3] \
+                + 3 * rest[4] + 1 * rest[5] + 7 * rest[6] + 3 * rest[7]
+
+    print(digit % 10)
+
+    return digit % 10
 
 
 def get_from_rest():
@@ -58,5 +72,7 @@ if __name__ == "__main__":
     print("data:")
     print(resp)
     print(resp.request)
+
+    count_a_control_digit(123)
 
 
