@@ -1,4 +1,4 @@
-#
+# -*- coding: utf-8 -*-
 
 import requests
 import json
@@ -34,6 +34,12 @@ def get_from_rest():
 
 
 def read_from_rest_with_header(number, digit):
+    """
+    Wysyła zapytanie do EKW z nagłówkiem (wziętym z zapytania przeglądarkowego)
+    :param number:
+    :param digit:
+    :return: zwraca odpowiedź od serwera EKW
+    """
     api_url = "https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW"
     data_for_book = {
         "kodEci": "TO1T",
@@ -49,6 +55,12 @@ def read_from_rest_with_header(number, digit):
 
 
 def read_from_rest(number, digit):
+    """
+    Wysyła zapytanie POST bez dodatkowego nagłówka
+    :param number:
+    :param digit:
+    :return: zwraca odpowiedź od serwera EKW
+    """
     api_url = "https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW"
     data_for_book = {
         "kodEci": "TO1T",
@@ -62,17 +74,26 @@ def read_from_rest(number, digit):
 
 
 def analise_of_response(response):
+    """
+    zwraca nam 20 znaków z argumentu wywołania po wzorniku,
+    :param response: przyjmuje dane tekstowe, szukamy w nich wzornika <label> Położenie </label>
+    :return: 20 znaków (adres powiązany z daną KW)
+    """
     data = []
     return data
 
 
 if __name__ == "__main__":
-    resp = read_from_rest(1, 7)
+    # resp = read_from_rest(1, 7)
+    # print("status code: ", resp.status_code)
+    # print("data:")
+    # print(resp)
+    # print(resp.request)
+
+    resp = read_from_rest_with_header(1, 7)
     print("status code: ", resp.status_code)
     print("data:")
     print(resp)
-    print(resp.request)
-
-    count_a_control_digit(123)
+    print(resp)
 
 
