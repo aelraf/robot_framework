@@ -12,13 +12,13 @@ def count_a_control_digit(number):
     rest = []
     for i in range(8):
         rest.append(number % 10)
-        number = int(number/10)
-    print(rest)
+        number = int(number / 10)
+#    print(rest)
 
     digit = 7 * rest[0] + 3 * rest[1] + 1 * rest[2] + 7 * rest[3] \
-                + 3 * rest[4] + 1 * rest[5] + 7 * rest[6] + 3 * rest[7]
+            + 3 * rest[4] + 1 * rest[5] + 7 * rest[6] + 3 * rest[7]
 
-    print(digit % 10)
+    # print(digit % 10)
 
     return digit % 10
 
@@ -33,11 +33,12 @@ def get_from_rest():
     return response
 
 
-def read_from_rest_with_header(number, digit):
+def read_from_rest_with_header(number, digit, key=None):
     """
     Wysyła zapytanie do EKW z nagłówkiem (wziętym z zapytania przeglądarkowego)
-    :param number:
-    :param digit:
+    :param number: numer księgi wieczystej
+    :param digit: cyfra kontrolna
+    :param key: klucz do sesji z serwerem
     :return: zwraca odpowiedź od serwera EKW
     """
     api_url = "https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW"
@@ -47,9 +48,36 @@ def read_from_rest_with_header(number, digit):
         "cyfraKontrolna": digit,
         "wyszukaj": "Submit"
     }
-    headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    headers = {
+        {
+            "name": "Accept",
+            "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+        },
+        {
+            "name": "Accept-Encoding",
+            "value": "gzip, deflate, br"
+        },
+        {
+            "name": "Accept-Language",
+            "value": "pl,en-US;q=0.7,en;q=0.3"
+        },
+        {
+            "name": "Connection",
+            "value": "keep-alive"
+        },
+        {
+            "name": "Content-Length",
+            "value": "61"
+        },
+        {
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+        },
+    }
 
     response = requests.post(api_url, data=json.dumps(data_for_book), headers=headers)
+    print('response.request:')
+    print(response.content)
 
     return response
 
@@ -57,8 +85,9 @@ def read_from_rest_with_header(number, digit):
 def read_from_rest(number, digit):
     """
     Wysyła zapytanie POST bez dodatkowego nagłówka
-    :param number:
-    :param digit:
+    :param number: numer KW
+    :param digit: cyfra kontrolna do danego numeru KW
+
     :return: zwraca odpowiedź od serwera EKW
     """
     api_url = "https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW"
@@ -71,6 +100,17 @@ def read_from_rest(number, digit):
     response = requests.post(api_url, data=json.dumps(data_for_book))
 
     return response
+
+
+def save_to_file(data):
+    """
+    zapisuje dane podane jako parametr wywołania do pliku
+    :param data - dane do zapisania do pliku
+    :return: zapisane dane w pliku
+    """
+    file = open('numery_KW.txt', 'a+')
+    file.write(data)
+    file.close()
 
 
 def analise_of_response(response):
@@ -94,6 +134,12 @@ if __name__ == "__main__":
     print("status code: ", resp.status_code)
     print("data:")
     print(resp)
-    print(resp)
 
-
+    # dziala
+    # save_to_file('podejrzane o KW giszczak\n')
+    # for i in range(100000):
+    #     cyfra = count_a_control_digit(i)
+    #     if i % 10 == 9 and cyfra == 6:
+    #         data = str(i) + " " + str(cyfra) + "\n"
+    #         save_to_file(data=data)
+    pass
