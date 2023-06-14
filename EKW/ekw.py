@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# https://towardsdatascience.com/data-science-skills-web-scraping-javascript-using-python-97a29738353f
+#
 
 import requests
 import json
@@ -49,30 +51,24 @@ def read_from_rest_with_header(number, digit, key=None):
         "wyszukaj": "Submit"
     }
     headers = {
-        {
-            "name": "Accept",
-            "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
-        },
-        {
-            "name": "Accept-Encoding",
-            "value": "gzip, deflate, br"
-        },
-        {
-            "name": "Accept-Language",
-            "value": "pl,en-US;q=0.7,en;q=0.3"
-        },
-        {
-            "name": "Connection",
-            "value": "keep-alive"
-        },
-        {
-            "name": "Content-Length",
-            "value": "61"
-        },
-        {
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-        },
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "pl,en-US;q=0.7,en;q=0.3",
+        "Connection": "keep-alive",
+        "Content-Length": "61",
+        "Content-Type": "application/x-www-form-urlencoded",
+        'Cookie': "f5_cspm=1234; " + key,
+        "DNT": "1",
+        "Host": "przegladarka-ekw.ms.gov.pl",
+        "Origin": "https://przegladarka-ekw.ms.gov.pl",
+        "Referer": "https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW?komunikaty=true&kontakt=true&okienkoSerwisowe=false",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "same-origin",
+        "Sec-Fetch-User": "?1",
+        "Sec-GPC": "1",
+        "Upgrade-Insecure-Requests": '1',
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0"
     }
 
     response = requests.post(api_url, data=json.dumps(data_for_book), headers=headers)
@@ -123,6 +119,19 @@ def analise_of_response(response):
     return data
 
 
+def scraping_data_from_javascript():
+    """
+    https://theautomatic.net/2019/01/19/scraping-data-from-javascript-webpage-python/
+
+    :return:
+    """
+    from requests_html import HTMLSession
+    session = HTMLSession()
+
+    resp = session.get("https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW")
+    resp.html.render()
+
+
 if __name__ == "__main__":
     # resp = read_from_rest(1, 7)
     # print("status code: ", resp.status_code)
@@ -130,10 +139,16 @@ if __name__ == "__main__":
     # print(resp)
     # print(resp.request)
 
-    resp = read_from_rest_with_header(1, 7)
-    print("status code: ", resp.status_code)
+    resp_get = get_from_rest()
+    print('get naglowek: ')
+    print(resp_get.headers)
+    cooki = resp_get.headers['Set-Cookie']
+
+    resp = read_from_rest_with_header(1, 7, cooki)
+    print("\nstatus code: ", resp.status_code)
+    print("ciasteczko: " + str(resp.headers))
     print("data:")
-    print(resp)
+    print(resp.content)
 
     # dziala
     # save_to_file('podejrzane o KW giszczak\n')
@@ -142,4 +157,4 @@ if __name__ == "__main__":
     #     if i % 10 == 9 and cyfra == 6:
     #         data = str(i) + " " + str(cyfra) + "\n"
     #         save_to_file(data=data)
-    pass
+
