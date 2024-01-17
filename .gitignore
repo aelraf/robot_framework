@@ -147,4 +147,6 @@ cython_debug/
 .idea/
 *.txt
 .pytest_cache
+*.png
+*.iml
 
